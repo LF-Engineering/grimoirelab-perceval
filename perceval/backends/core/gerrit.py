@@ -63,15 +63,15 @@ class Gerrit(Backend):
 
     CATEGORIES = [CATEGORY_REVIEW]
 
-    def __init__(self, hostname,
+    def __init__(self, url,
                  user=None, port=PORT, max_reviews=MAX_REVIEWS,
                  blacklist_reviews=None,
                  disable_host_key_check=False,
                  tag=None, archive=None):
-        origin = hostname
+        origin = url
 
         super().__init__(origin, tag=tag, archive=archive)
-        self.hostname = hostname
+        self.hostname = url
         self.user = user
         self.port = port
         self.max_reviews = max(1, max_reviews)
@@ -515,7 +515,7 @@ class GerritCommand(BackendCommand):
                            help="Set SSH port of the Gerrit server")
 
         # Required arguments
-        parser.parser.add_argument('hostname',
+        parser.parser.add_argument('url',
                                    help="Hostname of the Gerrit server")
 
         return parser
