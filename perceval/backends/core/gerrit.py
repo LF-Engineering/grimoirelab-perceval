@@ -515,7 +515,7 @@ class GerritCommand(BackendCommand):
                            help="Set SSH port of the Gerrit server")
 
         # Required arguments
-        parser.parser.add_argument('hostname',
+        parser.parser.add_argument('uri',
                                    help="Hostname of the Gerrit server")
 
         return parser
