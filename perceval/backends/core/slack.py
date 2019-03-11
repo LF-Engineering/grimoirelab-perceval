@@ -127,6 +127,7 @@ class Slack(Backend):
         # it is substracted by five decimals and not by six.
         if oldest > 0.0:
             oldest -= .00001
+            oldest = round(oldest, 6)
 
         fetching = True
         nmsgs = 0
