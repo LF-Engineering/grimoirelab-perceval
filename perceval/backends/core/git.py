@@ -334,7 +334,8 @@ class GitCommand(BackendCommand):
             git_path = self.parsed_args.git_log
         elif not self.parsed_args.git_path:
             base_path = os.path.expanduser('~/.perceval/repositories/')
-            processed_uri = self.parsed_args.uri.lstrip('/')
+            processed_uri = self.parsed_args.uri.lstrip('/').replace("https://","").replace("http://","").replace("/", "__")
+            
             git_path = os.path.join(base_path, processed_uri) + '-git'
         else:
             git_path = self.parsed_args.git_path
