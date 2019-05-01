@@ -276,7 +276,7 @@ class PipermailList(MailingList):
                 logger.debug("Ignoring %s archive because its extension was not recognized",
                              candidate)
 
-        logger.debug("%s archives found", len(links))
+        logger.info("%s archives found", len(links))
 
         return links
 
@@ -308,10 +308,10 @@ class PipermailList(MailingList):
             else:
                 raise e
         except OSError as e:
-            logger.warning("Ignoring %s archive due to: %s", url, str(e))
+            logger.info("Ignoring %s archive due to: %s", url, str(e))
             return False
 
-        logger.debug("%s archive downloaded and stored in %s", url, filepath)
+        logger.info("%s archive downloaded and stored in %s", url, filepath)
 
         return True
 
